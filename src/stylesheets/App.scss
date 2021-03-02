@@ -11,6 +11,12 @@ $green: #1ab28a;
   border-radius: 5%;
   padding-left: 10px;
 
+  .movieList {
+    margin: 5px;
+    border-style: ridge;
+    border-width: 5px;
+  }
+
   ul {
     width: 50%;
     margin: auto;
