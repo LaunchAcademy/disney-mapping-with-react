@@ -1,10 +1,16 @@
 import React from "react"
 
 const MovieTile = (props) => {
-  return(
+  const clickHandler = () => {
+    props.handleClick(props.id)
+  }
+
+  return (
     <li>
       {props.title}
-      <button type="button">See Songs for This Movie</button>
+      <button type="button" onClick={clickHandler}>
+        See Songs for This Movie
+      </button>
     </li>
   )
 }
