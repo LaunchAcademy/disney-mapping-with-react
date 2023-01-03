@@ -1,6 +1,55 @@
-import React from "react"
+import React, { useState } from "react"
+
+import MovieTile from "./MovieTile"
 
 const App = props => {
+  // const songsAndMovies = props.songsAndMovies
+  const { songsAndMovies } = props
+
+  const movieTileComponents = songsAndMovies.movies.map((movieObject) => {
+
+    // this will grab all of the relevant song objects
+    const relevantSongObjects = songsAndMovies.songs.filter((songObject) => {
+      return songObject.movieId === movieObject.id
+    })
+
+    return (
+      <MovieTile 
+        title={movieObject.title} 
+        songs={relevantSongObjects}
+      />
+    )
+  })
+
+
+  // ONLY RELEVANT FOR STATE
+  const [showSecretContent, changeSecretContentStatus] = useState(false)
+
+  const contentClicker = () => {
+    changeSecretContentStatus(!showSecretContent)
+  }
+
+  let secretMessage 
+  if (showSecretContent === true){
+    secretMessage = "Danny is better than minions"
+  }
+
+  return(
+    <div className="movie-container">
+      <h1>Movies to Watch</h1>
+
+      {movieTileComponents}
+
+      <button onClick={contentClicker}>
+        Click for Content
+      </button>
+      {secretMessage}
+    </div>
+  );
+};
+
+export default App
+
 
   // const handleClick = clickedMovieId => {
   //   // find the songs for the clicked movie
@@ -15,12 +64,3 @@ const App = props => {
   //   // alert
   //   alert(alertMessage)
   // }
-
-  return(
-    <div className="movie-container">
-      <h1>Movies to Watch</h1>
-    </div>
-  );
-};
-
-export default App
