@@ -4,7 +4,4 @@ import ReactDOM from "react-dom"
 import App from "./components/App"
 import data from "./constants/data"
 
-ReactDOM.render(
-  <App data={data}/>,
-  document.getElementById("app")
-)
+ReactDOM.render(<App dataFromApp={data} />, document.getElementById("app"))
